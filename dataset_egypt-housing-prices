@@ -1,0 +1,21 @@
+import opendatasets as od
+import pandas as pd
+import os
+
+od.download(
+    "https://www.kaggle.com/datasets/iyadelwy/egypt-housing-prices/discussion?sort=hotness")
+
+# Assuming the dataset is downloaded to a folder named 'egypt-housing-prices'
+# in the current working directory
+data_folder = "egypt-housing-prices" 
+# List all files in the data folder
+files = os.listdir(data_folder)
+# Find the CSV file 
+csv_file = [f for f in files if f.endswith('.csv')][0]
+# Construct the full path to the CSV file
+data_path = os.path.join(data_folder, csv_file)
+
+# Load the CSV file into a DataFrame
+df = pd.read_csv(data_path)
+
+df
